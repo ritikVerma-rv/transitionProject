@@ -8,26 +8,31 @@
 import UIKit
 
 class NextCollectionCell: UICollectionViewCell {
-    
-    @IBOutlet weak var constantWidth: NSLayoutConstraint!
-    @IBOutlet weak var constantHeight: NSLayoutConstraint!
-    @IBOutlet weak var rectangleView: UIView!
-    
-    @IBOutlet weak var firstSquareView: UIView!
-    @IBOutlet weak var secondSquareView: UIView!
-
-    @IBOutlet weak var firstAnimatedRectangleView: UIView!
-    @IBOutlet weak var secondAnimatedRectangleView: UIView!
-    @IBOutlet weak var thirdAnimatedRectangleView: UIView!
-    @IBOutlet weak var fourthAnimatedRectangleView: UIView!
-
-    
-    var widthValue = 100.00
-    var heightValue = 20.00
+    //MARK: - @IBOutlet
+    @IBOutlet weak private var constantWidth: NSLayoutConstraint!
+    @IBOutlet weak private var constantHeight: NSLayoutConstraint!
+    @IBOutlet weak private var rectangleView: UIView!
+    @IBOutlet weak private var firstSquareView: UIView!
+    @IBOutlet weak private var secondSquareView: UIView!
+    @IBOutlet weak private var firstAnimatedRectangleView: UIView!
+    @IBOutlet weak private var secondAnimatedRectangleView: UIView!
+    @IBOutlet weak private var thirdAnimatedRectangleView: UIView!
+    @IBOutlet weak private var fourthAnimatedRectangleView: UIView!
+    //MARK: - Varriables
+    private let widthValue = 120.00
+    private let heightValue = 25.00
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        setupIntialUI()
+    }
+}
+
+//MARK: - NextCollectionCellMethods
+extension NextCollectionCell {
+    
+    //MARK: - SetupIntialUI
+    private func setupIntialUI() {
         DispatchQueue.main.async {
             self.contentView.layoutIfNeeded()
             
@@ -43,28 +48,10 @@ class NextCollectionCell: UICollectionViewCell {
             
             self.contentView.layoutIfNeeded()
         }
-        
-
-                // Initialization code
-        
-        
-        
-//        self.contentView.layoutIfNeeded()
-//
-//        widthValue =  constantWidth.constant
-//        heightValue =  constantHeight.constant
-//
-//        constantWidth.constant =  0.00
-//        constantHeight.constant =  0.00
-//
-//        self.contentView.layoutIfNeeded()
     }
     
-    
-    
+    //MARK: - AnimationFromCenter
     func animationFromCenter() {
-        let rectangleView: CGFloat = 60
-        
         UIView.animate(withDuration: 1.0) { //1
             self.contentView.layoutIfNeeded()
             self.constantWidth.constant = self.widthValue
@@ -73,16 +60,16 @@ class NextCollectionCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - AnimationFromRight
     func animationFromRight() {
         UIView.animate(withDuration: 0.3) { [self] in
-            firstSquareView.frame = self.firstSquareView.frame.offsetBy(dx: 0, dy: 0)
-            firstAnimatedRectangleView.frame = self.firstAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
-            secondAnimatedRectangleView.frame = self.secondAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
+            firstSquareView.frame = firstSquareView.frame.offsetBy(dx: 0, dy: 0)
+            firstAnimatedRectangleView.frame = firstAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
+            secondAnimatedRectangleView.frame = secondAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
            
-            self.secondSquareView.frame = self.firstSquareView.frame.offsetBy(dx: 0, dy: 0)
-            self.thirdAnimatedRectangleView.frame = self.firstAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
-            self.fourthAnimatedRectangleView.frame = self.secondAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
+            secondSquareView.frame = firstSquareView.frame.offsetBy(dx: 0, dy: 0)
+            thirdAnimatedRectangleView.frame = firstAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
+            fourthAnimatedRectangleView.frame = secondAnimatedRectangleView.frame.offsetBy(dx: 0, dy: 0)
         }
     }
-    
 }

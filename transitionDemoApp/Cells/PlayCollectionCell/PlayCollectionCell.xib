@@ -10,27 +10,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayCollectionCell" id="gTV-IL-0wX" customClass="PlayCollectionCell" customModule="transitionDemoApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="215" height="369"/>
+            <rect key="frame" x="0.0" y="0.0" width="215" height="360"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="215" height="369"/>
+                <rect key="frame" x="0.0" y="0.0" width="215" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xft-UD-eph">
-                        <rect key="frame" x="0.0" y="0.0" width="215" height="369"/>
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="360"/>
                         <color key="backgroundColor" red="0.99339574580000001" green="0.5063887239" blue="0.12406007199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="20"/>
+                                <real key="value" value="24"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x50-ve-dkw">
-                        <rect key="frame" x="10" y="12" width="60" height="60"/>
+                        <rect key="frame" x="12" y="18" width="80" height="80"/>
                         <color key="backgroundColor" red="0.98331826929999999" green="0.91249996420000001" blue="0.14582216740000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="Vve-N1-rJn"/>
-                            <constraint firstAttribute="height" constant="60" id="yZB-h0-gZa"/>
+                            <constraint firstAttribute="width" constant="80" id="Vve-N1-rJn"/>
+                            <constraint firstAttribute="height" constant="80" id="yZB-h0-gZa"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -39,14 +39,14 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3E9-sn-wPn">
-                        <rect key="frame" x="10" y="304" width="195" height="40"/>
-                        <color key="backgroundColor" red="0.49249780180000002" green="0.81100374460000002" blue="0.17211014029999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="18" y="287" width="179" height="55"/>
+                        <color key="backgroundColor" red="0.49249780180000002" green="0.81100374460000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="mgt-Rm-L1R"/>
+                            <constraint firstAttribute="height" constant="55" id="mgt-Rm-L1R"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="20"/>
+                                <real key="value" value="25"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -54,16 +54,16 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="3E9-sn-wPn" secondAttribute="bottom" constant="25" id="843-uM-FbV"/>
+                <constraint firstAttribute="bottom" secondItem="3E9-sn-wPn" secondAttribute="bottom" constant="18" id="843-uM-FbV"/>
                 <constraint firstItem="3E9-sn-wPn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="E9f-5B-7X1"/>
                 <constraint firstAttribute="trailing" secondItem="xft-UD-eph" secondAttribute="trailing" id="JLs-bx-KvL"/>
                 <constraint firstItem="xft-UD-eph" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="T68-0n-WC9"/>
-                <constraint firstItem="x50-ve-dkw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="aEy-SC-6Z7"/>
-                <constraint firstItem="3E9-sn-wPn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="be1-xo-oyG"/>
-                <constraint firstItem="x50-ve-dkw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="cFW-IP-6bx"/>
+                <constraint firstItem="x50-ve-dkw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="18" id="aEy-SC-6Z7"/>
+                <constraint firstItem="3E9-sn-wPn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="18" id="be1-xo-oyG"/>
+                <constraint firstItem="x50-ve-dkw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="cFW-IP-6bx"/>
                 <constraint firstAttribute="bottom" secondItem="xft-UD-eph" secondAttribute="bottom" id="eG4-7v-zXn"/>
                 <constraint firstItem="xft-UD-eph" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="i8o-vh-RYm"/>
-                <constraint firstAttribute="trailing" secondItem="3E9-sn-wPn" secondAttribute="trailing" constant="10" id="k9z-Fl-gzf"/>
+                <constraint firstAttribute="trailing" secondItem="3E9-sn-wPn" secondAttribute="trailing" constant="18" id="k9z-Fl-gzf"/>
             </constraints>
             <size key="customSize" width="215" height="369"/>
             <connections>

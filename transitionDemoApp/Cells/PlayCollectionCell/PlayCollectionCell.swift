@@ -9,15 +9,8 @@ import UIKit
 import Hero
 
 class PlayCollectionCell: UICollectionViewCell {
- 
+    //MARK: - @IBOutlet
     @IBOutlet weak var orangeButton: UIView!
     @IBOutlet weak var yellowView: UIView!
-
-
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 }
 

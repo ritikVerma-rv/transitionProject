@@ -8,27 +8,40 @@
 import UIKit
 
 class NextVC: UIViewController {
-    
+    //MARK: - @IBOutlet
     @IBOutlet weak var downloadButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var isAnimationDone = false
-    var cellType : CellView = .twoSkeltonView
-
+    //MARK: - Varriables
+    private var isAnimationDone = false
+    private var cellType : KeyConstant.CellView = .twoSkeltonView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.register(UINib(nibName: "NextCollectionCell", bundle: nil), forCellWithReuseIdentifier: "NextCollectionCell")
-        collectionView.register(UINib(nibName: "BalanceCollectionCell", bundle: nil), forCellWithReuseIdentifier: "BalanceCollectionCell")
-        collectionView.register(UINib(nibName: "OswaldCollectionCell", bundle: nil), forCellWithReuseIdentifier: "OswaldCollectionCell")
-
+        setUpCollectionView()
+    }
+    
+    //MARK: - SetUpCollectionView
+    private func setUpCollectionView() {
+        collectionView.register(UINib(nibName: KeyConstant.CellIds.next.rawValue, bundle: nil),
+                                forCellWithReuseIdentifier: KeyConstant.CellIds.next.rawValue)
+        collectionView.register(UINib(nibName: KeyConstant.CellIds.balance.rawValue, bundle: nil),
+                                forCellWithReuseIdentifier: KeyConstant.CellIds.balance.rawValue)
+        collectionView.register(UINib(nibName: KeyConstant.CellIds.oswald.rawValue, bundle: nil),
+                                forCellWithReuseIdentifier: KeyConstant.CellIds.oswald.rawValue)
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+    }
+}
+
+//MARK: - Button's_Actions
+extension NextVC {
+    @IBAction private func dismissButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true)
     }
     
-    @IBAction func downloadButtonPressed(_ sender: Any) {
+    @IBAction private func downloadButtonPressed(_ sender: Any) {
         if cellType == .twoSkeltonView {
             cellType = .walletCell
             isAnimationDone = false
@@ -36,51 +49,49 @@ class NextVC: UIViewController {
         else if cellType == .walletCell {
             cellType = .oswaldCell
             isAnimationDone = false
-            
         }
-        
         collectionView.reloadData()
     }
 }
 
-
-
+//MARK: - UICollectionViewDelegateFlowLayout
 extension NextVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
 }
 
+//MARK: - UICollectionViewDelegate
 extension NextVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if cellType == .twoSkeltonView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NextCollectionCell", for: indexPath) as! NextCollectionCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyConstant.CellIds.next.rawValue,
+                                                          for: indexPath) as! NextCollectionCell
             return cell
         }
         else if cellType == .walletCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BalanceCollectionCell", for: indexPath) as! BalanceCollectionCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyConstant.CellIds.balance.rawValue,
+                                                          for: indexPath) as! BalanceCollectionCell
             return cell
         }
         else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OswaldCollectionCell", for: indexPath) as! OswaldCollectionCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KeyConstant.CellIds.oswald.rawValue,
+                                                          for: indexPath) as! OswaldCollectionCell
             return cell
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let afterSeconds = 1.0
         
         if cellType == .twoSkeltonView {
             if let cell = cell as? NextCollectionCell {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + afterSeconds) {
                     if !self.isAnimationDone {
                         self.isAnimationDone = true
                         cell.animationFromCenter()
@@ -91,10 +102,9 @@ extension NextVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         else if cellType == .walletCell {
             if let cell = cell as? BalanceCollectionCell {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + afterSeconds) {
                     if !self.isAnimationDone {
                         self.isAnimationDone = true
-//                        cell.animationFromCenter()
                         cell.animationFromRight()
                     }
                 }
@@ -102,13 +112,11 @@ extension NextVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         else {
             if let cell = cell as? OswaldCollectionCell {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + afterSeconds) {
                     if !self.isAnimationDone {
                         self.isAnimationDone = true
-//                        cell.animationFromCenter()
                         cell.animationFromRight()
-                        
-                        self.downloadButton.setTitle("Confirm", for: .normal)
+                        self.downloadButton.setTitle(KeyConstant.Titles.confirm.rawValue, for: .normal)
                         self.downloadButton.setTitleColor(.white, for: .normal)
                         self.downloadButton.backgroundColor = .black
                     }
@@ -117,6 +125,3 @@ extension NextVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
 }
-
-
-
